@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+        <beans>
+        <bean id = "parentTriangle" class="com.example.spring.TriangleOne" abstract="true"><!-- Instance of the bean is not created by making abstract = true -->
+         <property name="lines">
+            <list>
+               <ref bean="zeroCoordinate"/>
+            </list>
+         </property>
+        </bean>
+        <bean id="triangle1" class="com.example.spring.TriangleOne" parent="parentTriangle">
+        <property name="lines">
+        <list merge="true"><!-- without merge = true, the list is overridden with the new bean and the old bean set in the parentTriangle is lost -->
+               <ref bean="firstCoordinate"/>
+               <ref bean="secondCoordinate"/>
+        </list>
+        
+        </property>
+       
+        </bean>
+        
+        <bean id="zeroCoordinate" class="com.example.spring.Line">
+        <property name="x" value="0"></property>
+        <property name="y" value="0"></property>
+        </bean>
+        <bean id="firstCoordinate" class="com.example.spring.Line">
+        <property name="x" value="-20"></property>
+        <property name="y" value="0"></property>
+        </bean>
+        <bean id="secondCoordinate" class="com.example.spring.Line">
+        <property name="x" value="20"></property>
+        <property name="y" value="0"/>
+        </bean>
+       
+        </beans>
