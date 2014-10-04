@@ -1,60 +1,67 @@
 package com.spring.examples;
 
-public class Triangle {
+import java.util.List;
 
-	Line xy;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+public class Triangle implements ApplicationContextAware,BeanNameAware {
+
+	/*Line xy;
 	Line yz;
-	Line xz;
+	Line xz;*/
 	
+	private List<Line> lines;
+	private ApplicationContext context;
 	
 
-	
-	public Line getXy() {
-		return xy;
+
+
+	public List<Line> getLines() {
+		return lines;
 	}
 
 
 
 
-	public void setXy(Line xy) {
-		this.xy = xy;
-	}
-
-
-
-
-	public Line getYz() {
-		return yz;
-	}
-
-
-
-
-	public void setYz(Line yz) {
-		this.yz = yz;
-	}
-
-
-
-
-	public Line getXz() {
-		return xz;
-	}
-
-
-
-
-	public void setXz(Line xz) {
-		this.xz = xz;
+	public void setLines(List<Line> lines) {
+		this.lines = lines;
 	}
 
 
 
 
 	public void draw(){
-		System.out.println("Line xy is" + getXy().getX()+","+getXy().getY());
-		System.out.println("Line yz is" + getYz().getX()+","+getYz().getY());
-		System.out.println("Line xz is" + getXz().getX()+","+getXz().getY());
+		
+		for(Line line:lines){
+			System.out.println("Line is" + line.getX()+","+line.getY());
+			
+		}
+		
+	}
+
+
+
+
+	@Override
+	public void setBeanName(String beanName) {
+		// TODO Auto-generated method stub
+		System.out.println("bean name is:"+ beanName);
+		
+	}
+
+
+
+
+	@Override
+	public void setApplicationContext(ApplicationContext context)
+			throws BeansException {
+		// TODO Auto-generated method stub
+		System.out.println("context is:"+context);
+		this.context = context;
+		
 	}
 
 }
