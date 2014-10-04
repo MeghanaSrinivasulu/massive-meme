@@ -16,6 +16,10 @@ public class DrawingApplication {
 		//BeanFactory factory = new XmlBeanFactory(new FileSystemResource("spring.xml"));
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring1.xml");
 		Triangle triangle = (Triangle)context.getBean("triangle");
+		Line l= (Line)context.getBean("zeroCoordinate");
+		System.out.println(Line.getCount());
+		Line l2= (Line)context.getBean("zeroCoordinate");
+		System.out.println(Line.getCount());
 		triangle.draw();
 
 	}

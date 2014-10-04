@@ -3,12 +3,17 @@
         "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
         <beans>
-        <bean id="triangle" class="com.spring.examples.Triangle">
-        <property name="xy" ref="zeroCoordinate"></property>
-        <property name="yz" ref="firstCoordinate"></property>
-        <property name="xz" ref="secondCoordinate"></property>
+        <bean id="triangle" class="com.spring.examples.Triangle" >
+        <property name="lines">
+        <list>
+        <ref bean="zeroCoordinate"/>
+        <ref bean="firstCoordinate"/> 
+        <ref bean="secondCoordinate"/>
+        </list>
+        </property>
+       
         </bean>
-        <bean id="zeroCoordinate" class="com.spring.examples.Line">
+        <bean id="zeroCoordinate" class="com.spring.examples.Line" scope="prototype">
         <property name="x" value="0"></property>
         <property name="y" value="0"></property>
         </bean>
